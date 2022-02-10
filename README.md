@@ -3,11 +3,11 @@ Demo aplikace pro SPORTISIMO.
 
 ## Setup
 
-1. 
+1. Composer
 ```
 $ composer install
 ```
-1. Configure env variables - use local.example.neon
+2. Configure env variables - use local.example.neon
 
 ## Migration
 
