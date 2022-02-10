@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<meta name="robots" content="noindex,nofollow">
+
+	<title>{ifset title}{include title|stripHtml} | {/ifset}SRP</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="{$basePath}/css/admin.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!-- favicons -->
+{*	<link rel="apple-touch-icon" href="https://www.sportisimo.cz/assets/sportisimo/css/images/icons/favicons/favicon-apple.png" sizes="180x180">*}
+{*	<link rel="icon" type="image/png" href="https://www.sportisimo.cz/assets/sportisimo/css/images/icons/favicons/favicon-32x32.png" sizes="32x32">*}
+{*	<link rel="icon" type="image/png" href="https://www.sportisimo.cz/assets/sportisimo/css/images/icons/favicons/favicon-16x16.png" sizes="16x16">*}
+{*	<link rel="shortcut icon" href="https://www.sportisimo.cz/assets/sportisimo/css/images/icons/favicons/favicon.ico">*}
+{*	<link rel="icon" type="image/svg+xml" href="https://www.sportisimo.cz/assets/sportisimo/css/images/icons/favicons/favicon.svg">*}
+{*	<link rel="manifest" href="https://www.sportisimo.cz/assets/sportisimo/css/images/icons/favicons/site.webmanifest">*}
+{*	<link rel="mask-icon" href="https://www.sportisimo.cz/assets/sportisimo/css/images/icons/favicons/favicon-mask.svg" color="#EE3E33">*}
+</head>
+
+<body>
+	{snippet flashes}
+		<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+	{/snippet}
+
+	<div class="navbar-fixed">
+		<nav>
+			<div class="nav-wrapper">
+				<a n:href=":Admin:Dashboard:" class="brand-logo">SRP</a>
+				<ul class="right hide-on-med-and-down">
+					<li><a n:href=":Homepage:logOut">Odhlásit ({$userIdentity->getUsername()})</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+
+	<ul class="s_sidenav">
+		<li><a href="#"><i class="material-icons">menu</i></a></li>
+		<li><a n:href=":Admin:Dashboard:"><i class="material-icons">dashboard</i></a></li>
+		<li><a href="#"><i class="material-icons">people</i></a></li>
+		<li><a href="#"><i class="material-icons">new_releases</i></a></li>
+		<li><a n:href=":Admin:Brands:Brand:"><i class="material-icons">local_offer</i></a></li>
+	</ul>
+
+	<div class="s_main">
+		<div class="s_title">
+			<a href="{block backLink}{plink :Admin:Dashboard:}{/block}" class="back-link"><i class="material-icons tiny">arrow_back</i></a>
+			<h1 n:block="title">{include h1}</h1>
+		</div>
+
+		<div class="s_content--wrapper">
+			{include content}
+		</div>
+	</div>
+
+	{block scripts}
+		<script src="{$basePath}/js/jquery-3.6.0.min.js"></script>
+		<script src="{$basePath}/js/netteForms.min.js"></script>
+		<script src="{$basePath}/js/nette.ajax.js"></script>
+		<script src="{$basePath}/js/confirm.ajax.js"></script>
+		<script src="{$basePath}/js/materialize.min.js"></script>
+		<script src="{$basePath}/js/admin.js"></script>
+	{/block}
+</body>
+</html>

@@ -1,0 +1,22 @@
+$s-sidenav-width: 40px;
+$s-content-padding-left: 10px;
+
+// Colors
+// ==========================================================================
+
+$primary-color: #1565c0 !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
+
+$secondary-color: #098be0 !default;
+
+// Navigation Bar
+// ==========================================================================
+
+$navbar-height: 50px !default;
+$navbar-line-height: $navbar-height !default;
+$navbar-height-mobile: 50px !default;
+$navbar-line-height-mobile: $navbar-height-mobile !default;
+$navbar-font-size: 1rem !default;
+$navbar-font-color: #fff !default;
+$navbar-brand-font-size: 2.1rem !default;

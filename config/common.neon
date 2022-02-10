@@ -1,0 +1,69 @@
+parameters:
+    rootDir: %appDir%/..
+
+
+application:
+    errorPresenter: Error
+    mapping:
+        *: App\*Module\Presenters\*Presenter
+
+
+session:
+    expiration: 14 days
+
+
+di:
+    export:
+        parameters: no
+        tags: no
+
+
+extensions:
+    console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+
+    # Nettrine Common
+    nettrine.annotations: Nettrine\Annotations\DI\AnnotationsExtension
+    nettrine.cache: Nettrine\Cache\DI\CacheExtension
+    nettrine.migrations: Nettrine\Migrations\DI\MigrationsExtension
+    nettrine.fixtures: Nettrine\Fixtures\DI\FixturesExtension
+
+    # Nettrine DBAL
+    nettrine.dbal: Nettrine\DBAL\DI\DbalExtension
+    nettrine.dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension
+
+    # Nettrine ORM
+    nettrine.orm: Nettrine\ORM\DI\OrmExtension
+    nettrine.orm.cache: Nettrine\ORM\DI\OrmCacheExtension
+    nettrine.orm.console: Nettrine\ORM\DI\OrmConsoleExtension(%consoleMode%)
+    nettrine.orm.annotations: Nettrine\ORM\DI\OrmAnnotationsExtension
+
+
+nettrine.dbal:
+    debug:
+        panel: %debugMode%
+    connection:
+        driver: %database.driver%
+        host: %database.host%
+        user: %database.user%
+        password: %database.password%
+        dbname: %database.dbname%
+
+nettrine.orm.annotations:
+    mapping:
+        App\Model: %appDir%/Model
+
+nettrine.orm:
+    entityManagerDecoratorClass: App\Model\EntityManager
+    configuration:
+        autoGenerateProxyClasses: 2
+
+nettrine.migrations:
+    table: doctrine_migrations
+    column: version
+    directory: %rootDir%/migrations
+    namespace: Migrations
+    versionsOrganization: null
+
+nettrine.fixtures:
+    paths:
+        - %appDir%/Model

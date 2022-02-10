@@ -1,0 +1,26 @@
+services:
+    - App\Router\RouterFactory::createRouter
+
+    # Account
+    - App\Model\Account\UserFacade
+
+    UserRepository:
+        class: App\Model\Account\Repositories\UserRepository
+        factory: @Doctrine\ORM\EntityManagerInterface::getRepository('App\Model\Account\Entities\User')
+
+    # Brands
+    - App\Model\Brands\BrandFacade
+    - App\Model\Brands\BrandManager
+    - App\AdminModule\BrandsModule\Components\BrandForm\IBrandFormFactory
+    - App\AdminModule\BrandsModule\Components\BrandList\IBrandListFactory
+
+    BrandRepository:
+        class: App\Model\Brands\Repositories\BrandRepository
+        factory: @Doctrine\ORM\EntityManagerInterface::getRepository('App\Model\Brands\Entities\Brand')
+
+    # Components
+    - App\Components\ISignInControlFactory
+
+    # Security
+    - App\Security\Authorizator
+    - App\Security\PasswordAuthenticator

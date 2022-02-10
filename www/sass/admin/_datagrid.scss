@@ -1,0 +1,18 @@
+$s-datagrid-padding: 8px;
+
+.s_datagrid {
+    padding: $s-datagrid-padding;
+}
+
+.s_datagrid--header {
+    padding: $s-datagrid-padding (2 * $s-datagrid-padding);
+}
+
+.s_datagrid--table {
+    margin: $s-datagrid-padding 0;
+    border: 1px solid $table-border-color;
+}
+
+.s_datagrid--footer-pagination {
+    text-align: right;
+}

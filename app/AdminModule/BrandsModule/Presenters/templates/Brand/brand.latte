@@ -1,0 +1,17 @@
+{block backLink}{plink :Admin:Brands:Brand:}{/block}
+
+{block h1}
+    Značka <small>- {if $brand}editace{else}vložit nový záznam{/if}</small>
+{/block}
+
+{block content}
+
+<div class="col s5 m7">
+    <div class="card horizontal">
+        <div class="card-stacked">
+            <div class="card-content">
+                {control brandForm}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+html {
+    background: #eee;
+}
+
+td, th{
+    padding: 10px 10px;
+}
+
+.s_main {
+    margin-left: $s-sidenav-width;
+}
+
+.s_title {
+    display: block;
+    padding: 12px $s-content-padding-left;
+    background: $secondary-color;
+
+    a.back-link {
+        color: white;
+    }
+
+    h1 {
+        display: inline;
+        margin-top: 0;
+        padding-left: 5px;
+        font-size: 1.1rem;
+        color: white;
+    }
+}
+
+.s_content {
+    padding: $s-content-padding-left;
+
+    & > .s_content--inner {
+        background: white;
+    }
+}

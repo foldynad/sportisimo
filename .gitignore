@@ -1,0 +1,9 @@
+config/local.neon
+
+.idea/*
+log/*
+migrations/*
+temp/*
+temp/sessions/*
+!temp/sessions/.gitignore
+vendor/*

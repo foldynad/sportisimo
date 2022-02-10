@@ -1,0 +1,47 @@
+{snippet}
+
+<div id="brandFormModal" n:class="modal, $brandId !== null ? opened">
+    <div class="modal-content">
+        <h4>Značka <small>- {if $brand}editace{else}vložit nový záznam{/if}</small></h4>
+        {control brandForm}
+    </div>
+</div>
+
+<div class="s_datagrid">
+    <div class="s_datagrid--header">
+        <a n:href="editBrand! 0" class="waves-effect waves-light btn"><i class="material-icons left">add</i>přidat značku</a>
+    </div>
+
+    <div class="s_datagrid--table">
+        <table class="highlight responsive-table">
+            <thead class="grey lighten-3">
+            <tr>
+                <th>
+                    Název
+                    <a href="{link order asc}" n:class="grey-text, $order === 'asc' ? text-darken-2"><i class="material-icons tiny">arrow_upward</i></a>
+                    <a href="{link order desc}" n:class="grey-text, $order === 'desc' ? text-darken-2"><i class="material-icons tiny">arrow_downward</i></a>
+                </th>
+                <th class="right-align">Akce</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr n:foreach="$data as $item">
+                <td>{$item->getName()}</td>
+                <td class="right-align">
+                    <a n:href="deleteBrand! $item->getId()" class="ajax grey-text" data-confirm="Opravdu smazat záznam?">Smazat</a>
+                    <a n:href="editBrand! $item->getId()" class="ajax grey-text">Editovat</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="s_datagrid--footer">
+        <div class="s_datagrid--footer-pagination" n:if="$paginator->getPageCount() > 1">
+            {include './../../../Components/pagination.latte', paginator => $paginator, ajax => true, btnPrevNext => true, setting => true}
+        </div>
+    </div>
+</div>
+
+{/snippet}

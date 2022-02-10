@@ -1,0 +1,12 @@
+.flash {
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+    margin-left: $s-sidenav-width;
+    padding: 15px;
+    font-size: 1rem;
+    text-align: center;
+    text-shadow: 1px 1px 3px #000;
+    background: $success-color;
+    color: #fff;
+}

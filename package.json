@@ -1,0 +1,22 @@
+{
+  "name": "sportisimo",
+  "version": "1.0.0",
+  "description": "DEMO application",
+  "main": "admin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Foldyna",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-minify": "^3.1.0",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.49.7"
+  },
+  "keywords": [],
+  "dependencies": {
+    "materialize-css": "^1.0.0-rc.2"
+  }
+}

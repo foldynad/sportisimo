@@ -1,0 +1,44 @@
+nav .brand-logo {
+    margin-left: ($s-sidenav-width + 15);
+    font-size: 1.5rem;
+}
+
+.s_sidenav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    width: $s-sidenav-width;
+    height: 100%;
+    margin: 0;
+    padding-bottom: 60px;
+    background-color: $primary-color;
+    border-right: 1px solid $primary-color-dark;
+    overflow-y: auto;
+
+    li {
+        float: none;
+        line-height: 60px;
+
+        &.active { color: #ddd; }
+    }
+
+    li > a {
+        transition: background-color .3s;
+        display: block;
+        height: 60px;
+        line-height: 60px;
+        cursor: pointer;
+        color: $navbar-font-color;
+        font-size: $navbar-font-size;
+        text-align: center;
+
+        &:hover {
+            background-color: rgba(0,0,0,.1);
+        }
+
+        & > .material-icons {
+            font-size: 20px;
+        }
+    }
+}

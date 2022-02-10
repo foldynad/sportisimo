@@ -1,0 +1,64 @@
+{var $maxCountBtns = 6}
+{var $currentPage = $paginator->getPage()}
+{var $btnPrevNext = isset($btnPrevNext) ? $btnPrevNext : false}
+
+{var $prevNextClass = $btnPrevNext ? 'btn-link' : 'text-link'}
+{var $prevLabel = $btnPrevNext ? '<i class="material-icons">chevron_left</i>' : 'Předchozí stránka'}
+{var $nextLabel = $btnPrevNext ? '<i class="material-icons">chevron_right</i>' : 'Další stránka'}
+
+{var $ajax = !isset($ajax) || $ajax}
+
+<ul class="pagination">
+    {if $btnPrevNext}
+        <li n:if="$paginator->isFirst()" n:class="disabled, $prevNextClass"><a>{$prevLabel |noescape}</a></li>
+        <li n:if="!$paginator->isFirst()" n:class="$prevNextClass"><a rel="prev" href="{if $currentPage > 1}{link page $currentPage - 1}{/if}" n:class="$ajax ? ajax">{$prevLabel |noescape}</a></li>
+    {/if}
+
+    {if $paginator->getPageCount() > $maxCountBtns}
+        <li n:if="$paginator->getPage() === $paginator->getFirstPage()" class="btn-link btn-link-first active"><a>{$paginator->getFirstPage()}</a></li>
+        <li n:if="$paginator->getPage() !== $paginator->getFirstPage()" class="btn-link btn-link-first"><a {if $currentPage - 1 == $paginator->getFirstPage()}rel="prev"{/if} href="{link page 1}" n:class="$ajax ? ajax">{$paginator->getFirstPage()}</a></li>
+
+        {var $start = $paginator->getPage() - 2}
+        {if $start < 2}
+            {var $start = 2}
+        {/if}
+
+        {var $finish = $start + $maxCountBtns - 3}
+        {if $finish >= $paginator->getLastPage()}
+            {var $finish = $paginator->getLastPage() - 1}
+            {var $start = $finish - ($maxCountBtns - 3)}
+        {/if}
+
+        {var $pages = range($start, $finish)}
+        {var $nLastPage = $paginator->getLastPage() > 99999 ? 'n6' : ($paginator->getLastPage() > 9999 ? 'n5' : ($paginator->getLastPage() > 999 ? 'n4' : ''))}
+
+        <li n:if="$start > 2">...</li>
+
+        {foreach $pages as $page}
+            {var $nPage = $paginator->getPage() > 99999 ? 'n6' : ($paginator->getPage() > 9999 ? 'n5' : ($paginator->getPage() > 999 ? 'n4' : ''))}
+            <li n:if="$paginator->getPage() === $page" class="btn-link {$nPage} active"><a>{$page}</a></li>
+            <li n:if="$paginator->getPage() !== $page" class="btn-link {$nPage}"><a {if $currentPage - 1 == $page}rel="prev"{elseif $currentPage + 1 == $page}rel="next"{/if} href="{link page $page}" n:class="$ajax ? ajax">{$page}</a></li>
+        {/foreach}
+
+        <li n:if="$finish + 1 < $paginator->getLastPage()">...</li>
+        <li n:if="$paginator->getPage() === $paginator->getLastPage()" class="btn-link btn-link-last {$nLastPage} active"><a>{$paginator->getLastPage()}</a></li>
+        <li n:if="$paginator->getPage() !== $paginator->getLastPage()" class="btn-link btn-link-last {$nLastPage}"><a {if $currentPage + 1 == $paginator->getLastPage()}rel="next"{/if} href="{link page $paginator->getLastPage()}" n:class="$ajax ? ajax">{$paginator->getLastPage()}</a></li>
+
+    {else}
+        {foreach range(1, $paginator->getPageCount()) as $page}
+            <li n:if="$paginator->getPage() === $page" class="btn-link active"><a>{$page}</a></li>
+            <li n:if="$paginator->getPage() !== $page" class="btn-link"><a {if $currentPage - 1 == $page}rel="prev"{elseif $currentPage + 1 == $page}rel="next"{/if} href="{link page $page}" n:class="$ajax ? ajax">{$page}</a></li>
+        {/foreach}
+    {/if}
+
+    {if $btnPrevNext}
+        <li n:if="$paginator->isLast()" n:class="disabled, $prevNextClass"><a>{$nextLabel |noescape}</a></li>
+        <li n:if="!$paginator->isLast()" n:class="$prevNextClass"><a rel="next" href="{link page $currentPage + 1}" n:class="$ajax ? ajax">{$nextLabel |noescape}</a></li>
+    {/if}
+</ul>
+
+<ul class="pagination">
+    <li n:class="$paginator->getItemsPerPage() === 10 ? active"><a href="{link itemsPerPage 10}" n:class="$ajax ? ajax">10</a></li>
+    <li n:class="$paginator->getItemsPerPage() === 20 ? active"><a href="{link itemsPerPage 20}" n:class="$ajax ? ajax">20</a></li>
+    <li n:class="$paginator->getItemsPerPage() === 30 ? active"><a href="{link itemsPerPage 30}" n:class="$ajax ? ajax">30</a></li>
+</ul>

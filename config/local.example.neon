@@ -1,0 +1,7 @@
+parameters:
+    database:
+        driver: 'pdo_mysql'
+        host: localhost
+        dbname: sportisimo
+        user: root
+        password: 
