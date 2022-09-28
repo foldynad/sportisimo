@@ -31,6 +31,12 @@ final class BrandManager
         $this->em->flush();
     }
 
+    /**
+     * @param Brand $brand
+     * @return Brand|null
+     *
+     * @throws \Exception
+     */
     public function saveBrand(Brand $brand): ?Brand
     {
         $this->em->persist($brand);

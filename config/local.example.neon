@@ -4,4 +4,4 @@ parameters:
         host: localhost
         dbname: sportisimo
         user: root
-        password: 
+        password:

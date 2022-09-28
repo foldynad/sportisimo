@@ -46,7 +46,7 @@ class BrandForm extends BaseForm
         return $form;
     }
 
-    public function submitSucceeded(Form $form, ArrayHash $values)
+    public function submitSucceeded(Form $form, ArrayHash $values): void
     {
         $brand = $values->brandId
             ? $this->brandFacade->findBrand((int)$values->brandId)
@@ -54,7 +54,11 @@ class BrandForm extends BaseForm
 
         $brand->setName($values->name);
 
-        $this->brandFacade->saveBrand($brand);
+        try {
+            $this->brandFacade->saveBrand($brand);
+        } catch (\Exception $e) {
+            $form->addError('Neco je spatne...');
+        }
 
         $this->onSuccess();
     }

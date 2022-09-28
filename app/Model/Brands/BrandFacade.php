@@ -27,6 +27,9 @@ final class BrandFacade
         return $this->brandManager->deleteBrand($brand);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function saveBrand(Brand $brand): ?Brand
     {
         return $this->brandManager->saveBrand($brand);
