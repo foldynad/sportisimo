@@ -17,9 +17,7 @@ final class HomepagePresenter extends BasePresenter
     public function actionLogOut(): void
     {
         $this->getUser()->logout(true);
-
         $this->flashMessage('Jsi úspěšně odhlášený.');
-
         $this->redirect('Homepage:default');
     }
 
